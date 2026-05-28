@@ -1,0 +1,53 @@
+<odoo>
+    <menuitem id="menu_riesgos_financieros" name="Riesgos Financieros" sequence="10"/>
+
+    <record id="action_borner_riesgo" model="ir.actions.act_window">
+        <field name="name">Operaciones</field>
+        <field name="res_model">borner.riesgo</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="submenu_riesgos" parent="menu_riesgos_financieros" action="action_borner_riesgo" name="Riesgos Registrados"/>
+
+    <!-- TREE VIEW -->
+    <record id="view_borner_riesgo_tree" model="ir.ui.view">
+        <field name="name">borner.riesgo.list</field>
+        <field name="model">borner.riesgo</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="fecha"/>
+                <field name="proveedor_id"/>
+                <field name="concepto"/>
+                <field name="monto"/>
+                <field name="estado"/>
+                <field name="riesgo"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_borner_riesgo_form" model="ir.ui.view">
+        <field name="name">borner.riesgo.form</field>
+        <field name="model">borner.riesgo</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_evaluar_riesgo" string="Evaluar Riesgo" type="object" class="btn btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="fecha"/>
+                        <field name="proveedor_id"/>
+                        <field name="concepto"/>
+                        <field name="monto"/>
+                        <field name="estado"/>
+                        <field name="riesgo" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
